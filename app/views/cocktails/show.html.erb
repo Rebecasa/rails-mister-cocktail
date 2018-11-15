@@ -4,11 +4,11 @@
     <h3><%= "Ingredients:" %></h3>
       <% @cocktail.doses.each do |dose| %>
         <p>
-          <%= "#{dose.description} : #{dose.ingredient.name}" %>
+          <%= "#{dose.description} : #{dose.ingredient.name}" %>&nbsp&nbsp
           <%= link_to "", cocktail_dose_path(@cocktail, dose), method: :delete ,class:"fas fa-trash-alt"%>
       </p>
       <% end %>
-    <%= link_to "+", new_cocktail_dose_path(@cocktail)   %>&nbsp&nbsp&nbsp
-    <%= link_to "Return", root_path  %>
+    <%= link_to " ", new_cocktail_dose_path(@cocktail), class:"fas fa-plus" %> &nbsp&nbsp&nbsp
+    <%= link_to " ", root_path, class:"fas fa-undo-alt return" %>
   </div>
 </div>
