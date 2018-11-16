@@ -1,14 +1,21 @@
+
+
 <div class="container">
-  <div class="row col-md-4 col-md-offset-4">
-    <h2><%= @cocktail.name %></h2>
-    <h3><%= "Ingredients:" %></h3>
-      <% @cocktail.doses.each do |dose| %>
-        <p>
-          <%= "#{dose.description} : #{dose.ingredient.name}" %>&nbsp&nbsp
-          <%= link_to "", cocktail_dose_path(@cocktail, dose), method: :delete ,class:"fas fa-trash-alt"%>
-      </p>
-      <% end %>
-    <%= link_to " ", new_cocktail_dose_path(@cocktail), class:"fas fa-plus" %> &nbsp&nbsp&nbsp
-    <%= link_to " ", root_path, class:"fas fa-undo-alt return" %>
+    <div class="card_show">
+    <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fit, class:"cocktail" %>
+
+    <%= render'/shared/navbar', cocktail: @cocktail %>
+    <div class="card-data background-color">
+      <h2><%= @cocktail.name %></h2>
+       <h3><%= "Ingredients:" %></h3>
+         <% @cocktail.doses.each do |dose| %>
+          <p>
+            <%= "#{dose.description} : #{dose.ingredient.name}" %>&nbsp&nbsp
+            <%= link_to "", cocktail_dose_path(@cocktail, dose), method: :delete ,class:"fas fa-trash-alt"%>
+          </p>
+          <% end %>
+        <%= link_to " ", new_cocktail_dose_path(@cocktail), class:"fas fa-plus" %> &nbsp&nbsp&nbsp
+        <%= link_to " ", root_path, class:"fas fa-undo-alt return" %>
+    </div>
   </div>
 </div>

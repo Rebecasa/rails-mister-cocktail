@@ -1,8 +1,10 @@
-<div class="container">
-  <div class="row col-md-4 col-md-offset-4">
-   <h3><%= 'Create a new cocktail'%></h3>
-  <%= render '/shared/form', item: @cocktail %>
-  <%= link_to "Return", root_path  %>
+<div class="banner-cocktail">
+  <div class="container">
+    <div class="row col-md-4 col-md-offset-4 background-color">
+     <h3><%= 'Create a new cocktail'%></h3>
+    <%= render '/shared/form', item: @cocktail %><br>
+    <%= link_to " ", root_path, class:"fas fa-undo-alt return"   %>
+    </div>
   </div>
 </div>
 

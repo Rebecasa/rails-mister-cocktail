@@ -1,8 +1,15 @@
 class CocktailsController < ApplicationController
-
   def index
     @cocktails = Cocktail.all
-    @cocktail = Cocktail.new
+    if !(params[:name]).nil?
+
+      @cocktail = Cocktail.where("#{:name} ilike ?", "%#{params[:name]}%").take
+      if @cocktail.nil?
+       redirect_to root_path, :alert => "doesn't exist"
+      else
+        redirect_to @cocktail
+      end
+    end
   end
 
   def show
@@ -16,7 +23,7 @@ class CocktailsController < ApplicationController
   def create
     @cocktail = Cocktail.create(cocktail_params)
     if @cocktail.save
-      redirect_to @cocktail
+      redirect_to root_path
     else
       render 'new'
     end
@@ -30,6 +37,6 @@ class CocktailsController < ApplicationController
   private
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 end

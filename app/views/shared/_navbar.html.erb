@@ -4,16 +4,24 @@
 
     <!-- Links -->
 
-    <%= form_tag("cocktail", method: "get") do %>
+    <%= form_tag("/cocktails", method: "get") do %>
       <div class= "navbar-wagon-item navbar-wagon-link inline-block">
       <%= label_tag(:name, "Search for:") %>
       <%= text_field_tag(:name) %>
       <%= submit_tag("Search") %>
        </div>
     <% end %>
-    <%= link_to "Add new cocktail", new_cocktail_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
-
+    <%= link_to "Add new cocktail", new_cocktail_path, class: "navbar-wagon-item navbar-wagon-link " %>
+      <!-- Dropdown list appearing on mobile only -->
+        <div class="navbar-wagon-item hidden-md hidden-lg">
+          <div class="dropdown">
+            <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                <%= link_to "Add new cocktail", new_cocktail_path, class: "navbar-wagon-item navbar-wagon-link" %>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

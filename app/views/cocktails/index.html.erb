@@ -1,13 +1,18 @@
-<%= render'/shared/navbar', cocktail: @cocktail %>
-<%= render'/shared/banner' %>
+<div class="full-container">
+  <%= render'/shared/navbar', cocktail: @cocktail %>
+  <%= render'/shared/banner' %>
 
-<div class="container">
-  <div class="row col-md-4 col-md-offset-4">
-    <%= link_to "+ Add a new cocktail", new_cocktail_path %>
-    <% @cocktails.each do |cocktail| %>
-    <p><%= cocktail.name %></p>
-    <%= link_to "See more details", cocktail  %>
-
+  <div class="container">
+    <div class="row">
+      <% @cocktails.each do |cocktail| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class= "card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+        url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>');">
+        <p><%= cocktail.name %></p>
+        <%= link_to "", cocktail %>
+      </div>
+    </div>
     <% end %>
   </div>
+</div>
 </div>
