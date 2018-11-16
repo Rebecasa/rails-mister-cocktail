@@ -5,7 +5,7 @@ class Cocktail < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
- before_save :assign_url
+ before_create :assign_url
 
  private
 
